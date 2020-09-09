@@ -6,27 +6,23 @@ import { initialData } from '../utils/variables.js'
 
 class DeckDashboard extends React.Component {
   state={
-    initialData:"boom"
+    initialData:null
   }
   componentDidMount(){
-    //initialData = setInitialData()
-    //console.log("this is the initialData",initialData)
+    const boomy = setInitialData()
+
+    console.log("This is boomy",boomy)
+    this.setState(()=>({
+      initialData: boomy
+    }))
   }
   render(){
-    if (initialData === 2){
     return(
       <View>
-        <Text>{this.state.initialData}</Text>
+        <Text>Boom:{this.state.initialData}</Text>
       </View>
     )
   }
-  else{
-    return(
-      <View>
-      </View>
-    )
-  }
-}
 }
 
 export default DeckDashboard
