@@ -2,18 +2,21 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { setInitialData, getDecks } from '../utils/helper.js'
+import { initialData } from '../utils/variables.js'
 
 class DeckDashboard extends React.Component {
+  state={
+    initialData:"boom"
+  }
   componentDidMount(){
-    let initialData= null
-    initialData = setInitialData()
-    console.log("this is the initialData",initialData)
+    //initialData = setInitialData()
+    //console.log("this is the initialData",initialData)
   }
   render(){
-    if (initialData !== null){
+    if (initialData === 2){
     return(
       <View>
-        <Text>{initialData}</Text>
+        <Text>{this.state.initialData}</Text>
       </View>
     )
   }
