@@ -33,5 +33,14 @@ export const saveDeckTitle = (deckObject) => {
 
 
 export const addCardToDeck = (deckTitle, card) => {
+  const selectedDeck = getDeck(deckTitle)
+  selectedDeck = [...selectedDeck.cards,card]
 
+  AsyncStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(
+    {[deckTitle]:selectedDeck}
+  ))
+  .then(()=>selectedDeck)
+  .catch((err)=>{
+    console.log("error is",error)
+  })
 }
