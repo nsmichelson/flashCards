@@ -39,7 +39,7 @@ export const addCardToDeck = (deckTitle, cardObject) => {
   const selectedDeck = getDeck(deckTitle)
   selectedDeck = [...selectedDeck.questions,cardObject]
 
-  AsyncStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(
+  AsyncStorage.mergeItem(DECK_STORAGE_KEY, JSON.stringify(
     {[deckTitle]:selectedDeck}
   ))
   .then(()=>selectedDeck)
