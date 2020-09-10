@@ -5,9 +5,6 @@ const DECK_STORAGE_KEY = "FlashCards:InitialDecks"
 
 
 export const getDecks = () => {
-  console.log("In the get decks function now")
-  const  boom = AsyncStorage.getItem(DECK_STORAGE_KEY)
-  console.log(boom)
   return AsyncStorage.getItem(DECK_STORAGE_KEY)
 
 }
@@ -16,7 +13,7 @@ export const setInitialData = () => {
   let initialData = starterDecks
   console.log("in the setinitialdata helper function now", initialData)
 
-  return AsyncStorage.setItem(DECK_STORAGE_KEY,JSON.stringify(initialData),getDecks)
+  return AsyncStorage.setItem(DECK_STORAGE_KEY,JSON.stringify(initialData))
 
 }
 

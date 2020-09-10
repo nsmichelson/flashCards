@@ -6,7 +6,7 @@ import { initialData } from '../utils/variables.js'
 
 class DeckDashboard extends React.Component {
   state={
-    initialData:"blah"
+    initialData:{}
     }
   componentDidMount(){
     setInitialData()
@@ -24,10 +24,10 @@ class DeckDashboard extends React.Component {
     const deckers = Object.keys(initialData)
     return(
       <View>
-        <Text>Boom:{deckers.map((deck)=>{
+      {deckers.map((deck)=>{
           return (
             <Text>{deck}</Text>
-          )})}</Text>
+          )})}
       </View>
       )
     }
