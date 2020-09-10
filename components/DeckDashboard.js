@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { setInitialData, getDecks, getDeck } from '../utils/helper.js'
+import { setInitialData, getDecks, getDeck, saveDeckTitle } from '../utils/helper.js'
 import { initialData } from '../utils/variables.js'
 
 class DeckDashboard extends React.Component {
@@ -10,6 +10,7 @@ class DeckDashboard extends React.Component {
     }
   componentDidMount(){
     setInitialData()
+      .then(saveDeckTitle('Boom'))
       .then(getDecks)
       .then((results)=>{
         const resultos = JSON.parse(results)
@@ -26,7 +27,7 @@ class DeckDashboard extends React.Component {
       <View>
       {deckers.map((deck)=>{
           return (
-            <Text>{deck}</Text>
+            <Text key={deck}>{deck}</Text>
           )})}
       </View>
       )

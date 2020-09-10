@@ -19,25 +19,19 @@ export const setInitialData = () => {
 export const getDeck = (deckID) => {
   return AsyncStorage.getItem(DECK_STORAGE_KEY)
   .then((decks)=>{
-    console.log("this is what we got for decks",decks)
     const parsedDecks = JSON.parse(decks)
-    console.log("parsed decks are", parsedDecks)
-    console.log("THIS IS THE DECK TO RETRIEVE!!!!!!!!!",parsedDecks[deckID])
     return parsedDecks[deckID]
-})
+  })
 }
 
 export const saveDeckTitle = (deckTitle) => {
-  return AsyncStorage.mergeItem(DECK_STORAGE_KEY, JSON.stringify(
-    {[deckTitle]:{
-      title:deckTitle,
-      questions:[]
-    }}
-  ))
-  .then(()=>deckTitle)
-  .catch((err)=>{
-    console.log("error is:",error)
-  })
+  console.log("**********In the savedecktitle function, this is what we are saving", deckTitle)
+  const newDeckObject =
+      {[deckTitle]:{
+        title:deckTitle,
+        questions:[]
+      }}
+  return AsyncStorage.mergeItem(DECK_STORAGE_KEY, JSON.stringify(newDeckObject))
 }
 
 
