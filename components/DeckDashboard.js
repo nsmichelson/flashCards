@@ -10,6 +10,7 @@ class DeckDashboard extends React.Component {
     }
   componentDidMount(){
     setInitialData()
+      .then(getDecks)
       .then((results)=>{
         console.log("this is what we got from getitems",results)
         const resultos = JSON.parse(results)
@@ -23,7 +24,7 @@ class DeckDashboard extends React.Component {
     const { initialData } = this.state
     return(
       <View>
-        <Text>Boom:{initialData}</Text>
+        <Text>Boom:</Text>
       </View>
       )
     }
