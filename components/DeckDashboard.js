@@ -12,7 +12,6 @@ class DeckDashboard extends React.Component {
     setInitialData()
       .then(getDecks)
       .then((results)=>{
-        console.log("this is what we got from getitems",results)
         const resultos = JSON.parse(results)
         console.log("RESULTS are",resultos)
         this.setState(()=>({
@@ -22,9 +21,13 @@ class DeckDashboard extends React.Component {
     }
   render(){
     const { initialData } = this.state
+    const deckers = Object.keys(initialData)
     return(
       <View>
-        <Text>Boom:</Text>
+        <Text>Boom:{deckers.map((deck)=>{
+          return (
+            <Text>{deck}</Text>
+          )})}</Text>
       </View>
       )
     }
