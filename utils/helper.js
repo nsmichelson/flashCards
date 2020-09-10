@@ -21,11 +21,13 @@ export const getDeck = (deckID) => {
 
 }
 
-export const saveDeckTitle = (deckObject) => {
+export const saveDeckTitle = (deckTitle) => {
   return AsyncStorage.mergeItem(DECK_STORAGE_KEY, JSON.stringify(
-    {[deckObject.title]:deckObject}
+    {[deckTitle]:{
+      cards:[]
+    }}
   ))
-  .then(()=>deckObject)
+  .then(()=>deckTitle)
   .catch((err)=>{
     console.log("error is:",error)
   })
