@@ -25,7 +25,6 @@ export const getDeck = (deckID) => {
 }
 
 export const saveDeckTitle = (deckTitle) => {
-  console.log("**********In the savedecktitle function, this is what we are saving", deckTitle)
   const newDeckObject =
       {[deckTitle]:{
         title:deckTitle,
