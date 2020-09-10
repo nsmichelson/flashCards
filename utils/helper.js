@@ -5,7 +5,7 @@ const DECK_STORAGE_KEY = "FlashCards:Decks"
 
 
 export const getDecks = () => {
-  console.log("what returning from getdecks",AsyncStorage.getItem(DECK_STORAGE_KEY))
+//  console.log("what returning from getdecks",AsyncStorage.getItem(DECK_STORAGE_KEY))
   return AsyncStorage.getItem(DECK_STORAGE_KEY)
 
 }
@@ -17,14 +17,21 @@ export const setInitialData = () => {
 
 
 export const getDeck = (deckID) => {
-  return JSON.parse(AsyncStorage.getItem(DECK_STORAGE_KEY)).deckID
-
+  return AsyncStorage.getItem(DECK_STORAGE_KEY)
+  .then((decks)=>{
+    console.log("this is what we got for decks",decks)
+    const parsedDecks = JSON.parse(decks)
+    console.log("parsed decks are", parsedDecks)
+    console.log("THIS IS THE DECK TO RETRIEVE!!!!!!!!!",parsedDecks[deckID])
+    return parsedDecks[deckID]
+})
 }
 
 export const saveDeckTitle = (deckTitle) => {
   return AsyncStorage.mergeItem(DECK_STORAGE_KEY, JSON.stringify(
     {[deckTitle]:{
-      cards:[]
+      title:deckTitle,
+      questions:[]
     }}
   ))
   .then(()=>deckTitle)
@@ -34,9 +41,9 @@ export const saveDeckTitle = (deckTitle) => {
 }
 
 
-export const addCardToDeck = (deckTitle, card) => {
+export const addCardToDeck = (deckTitle, cardObject) => {
   const selectedDeck = getDeck(deckTitle)
-  selectedDeck = [...selectedDeck.cards,card]
+  selectedDeck = [...selectedDeck.questions,cardObject]
 
   AsyncStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(
     {[deckTitle]:selectedDeck}
