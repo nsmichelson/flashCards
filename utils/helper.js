@@ -46,9 +46,15 @@ export const saveDeckTitle = (deckTitle) => {
 
 export const addCardToDeck = async (key, values) => {
     try{
+      console.log("IN ADD CARD TO DECK FUNCTION")
+
         return await AsyncStorage.getItem(DECK_STORAGE_KEY)
-            .then(results => JSON.parse(results))
-            .then( results => {
+            .then((results) =>{
+              console.log("IN ADD CARD TO DECK FUNCTION- 2")
+              JSON.parse(results)
+            })
+            .then( (results) => {
+              console.log("IN ADD CARD TO DECK FUNCTION- 3")
                 results[key].questions.push(values)
                 AsyncStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(results))
                 return results

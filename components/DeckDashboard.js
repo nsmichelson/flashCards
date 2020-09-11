@@ -8,24 +8,31 @@ class DeckDashboard extends React.Component {
   state={
     initialData:{}
     }
+
+  getAndLogData = () => {
+    return getDecks()
+    //.then(getDecks)
+    .then((results)=>{
+      const resultos = JSON.parse(results)
+      console.log("RESULTS RESULTS RESULTS ARE:",resultos)
+      this.setState(()=>({
+        initialData: resultos
+      }))
+    })
+  }
   componentDidMount(){
     const qToAdd = {
       question: 'Boom?',
       answer: 'Boomba Boom'
     }
-    setInitialData()
+    return setInitialData()
       .then(saveDeckTitle('Boooom'))
       .then(addCardToDeck('Boooom',qToAdd))
-      .then(getDecks)
-      //.then(getDecks)
-      .then((results)=>{
-        const resultos = JSON.parse(results)
-        console.log("RESULTS RESULTS RESULTS ARE:",resultos)
-        this.setState(()=>({
-          initialData: resultos
-        }))
-      })
-    }
+      .then(()=>{
+        console.log("should have added card now!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+        this.getAndLogData()
+    })
+  }
   render(){
     const { initialData } = this.state
     const deckers = Object.keys(initialData)
