@@ -44,22 +44,39 @@ export const saveDeckTitle = (deckTitle) => {
 }
 
 
-export async function addCardToDeck(title, card) {
-  try {
-    const deck = await getDeck(title);
+export const addCardToDeck = async (key, values) => {
+    try{
+        return await AsyncStorage.getItem(DECK_STORAGE_KEY)
+            .then(results => JSON.parse(results))
+            .then( results => {
+                results[key].questions.push(values)
+                AsyncStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(results))
+                return results
+            })
 
-    await AsyncStorage.mergeItem(
-      DECK_STORAGE_KEY,
-      JSON.stringify({
-        [title]: {
-          questions: [...deck.questions].concat(card)
-        }
-      })
-    );
-  } catch (err) {
-    console.log(err);
-  }
+    }catch(e){
+        console.log("Error saving card: ", e)
+    }
 }
+
+
+
+// export async function addCardToDeck(title, card) {
+//   try {
+//     const deck = await getDeck(title);
+//
+//     await AsyncStorage.mergeItem(
+//       DECK_STORAGE_KEY,
+//       JSON.stringify({
+//         [title]: {
+//           questions: [...deck.questions].concat(card)
+//         }
+//       })
+//     );
+//   } catch (err) {
+//     console.log(err);
+//   }
+// }
 
 
 
