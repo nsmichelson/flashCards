@@ -45,8 +45,8 @@ export const addCardToDeck = async (deckTitle, cardObject) => {
       {[deckTitle]:selectedDeck}
     ))
   })
-  .then(()=>getDeck(deckTitle))
-  .then((deck)=>{
-    console.log("DECK DECK DECK:",deck)
+  .then(()=>getDecks())
+  .then((decks)=>{
+    console.log("DECK DECK DECK:", decks)
     })
   }
