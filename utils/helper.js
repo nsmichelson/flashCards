@@ -44,6 +44,28 @@ export const saveDeckTitle = (deckTitle) => {
 }
 
 
+export const getStarted = async () => {
+  const qToAdd = {
+    question: 'Boom?',
+    answer: 'Boomba Boom'
+  }
+  try {
+    return saveDeckTitle('Boooom')
+    .then(addCardToDeck('Boooom',qToAdd))
+    .then(()=>{
+      console.log("should have addded the card")
+      return getDecks()})
+    .then((stringyDecks)=>{
+      console.log("what we got for stringdecks:",stringyDecks)
+      return JSON.parse(stringyDecks)
+    })
+  }
+  catch(e){
+    console.log("Error is",e)
+  }
+}
+
+
 export const addCardToDeck = (key, values) => {
       console.log("IN ADD CARD TO DECK FUNCTION")
       return AsyncStorage.getItem(DECK_STORAGE_KEY)
@@ -59,6 +81,7 @@ export const addCardToDeck = (key, values) => {
                 results[key].questions.push(values)
                 AsyncStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(results))
                 return results
+                //what if return the async line above????
             })
 
 }
