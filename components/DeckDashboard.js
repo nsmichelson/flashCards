@@ -16,10 +16,11 @@ class DeckDashboard extends React.Component {
     setInitialData()
       .then(saveDeckTitle('Boooom'))
       .then(addCardToDeck('Boooom',qToAdd))
-      //.then(getDecks)
       .then(getDecks)
+      //.then(getDecks)
       .then((results)=>{
         const resultos = JSON.parse(results)
+        console.log("RESULTS RESULTS RESULTS ARE:",resultos)
         this.setState(()=>({
           initialData: resultos
         }))
@@ -34,7 +35,6 @@ class DeckDashboard extends React.Component {
           return (
             <Text key={deck}>{deck}</Text>
           )})}
-          <Text>{this.state.initialData['Boooom'].questions}</Text>
       </View>
       )
     }

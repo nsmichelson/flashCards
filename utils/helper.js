@@ -16,14 +16,23 @@ export const setInitialData = () => {
   return AsyncStorage.setItem(DECK_STORAGE_KEY,JSON.stringify(initialData))
 }
 
+export async function getDeck(id) {
+  try {
+    const storeResults = await AsyncStorage.getItem(DECK_STORAGE_KEY);
 
-export const getDeck = (deckID) => {
-  return AsyncStorage.getItem(DECK_STORAGE_KEY)
-  .then((decks)=>{
-    const parsedDecks = JSON.parse(decks)
-    return parsedDecks[deckID]
-  })
+    return JSON.parse(storeResults)[id];
+  } catch (err) {
+    console.log(err);
+  }
 }
+
+// export const getDeck = (deckID) => {
+//   return AsyncStorage.getItem(DECK_STORAGE_KEY)
+//   .then((decks)=>{
+//     const parsedDecks = JSON.parse(decks)
+//     return parsedDecks[deckID]
+//   })
+// }
 
 export const saveDeckTitle = (deckTitle) => {
   const newDeckObject =
@@ -35,18 +44,37 @@ export const saveDeckTitle = (deckTitle) => {
 }
 
 
-export const addCardToDeck = (deckTitle, cardObject) => {
-    return AsyncStorage.getItem(DECK_STORAGE_KEY).then(stringifiedDecks => {
-        let decks = JSON.parse(stringifiedDecks);
-        let deckKeys = Object.keys(decks);
+export async function addCardToDeck(title, card) {
+  try {
+    const deck = await getDeck(title);
 
-        deckKeys.forEach(deckKey => {
-            let deck = decks[deckKey];
-            if(deck.title === deckTitle)
-                deck.questions = [...deck.questions, cardObject]
-        });
-        let stringifiedUpdatedDecks = JSON.stringify(decks)
-        AsyncStorage.setItem(DECK_STORAGE_KEY, stringifiedUpdatedDecks).catch(err => console.log(err))
-        return Object.values(decks)
-    }).catch(err => console.log(err))
+    await AsyncStorage.mergeItem(
+      DECK_STORAGE_KEY,
+      JSON.stringify({
+        [title]: {
+          questions: [...deck.questions].concat(card)
+        }
+      })
+    );
+  } catch (err) {
+    console.log(err);
+  }
 }
+
+
+
+// export const addCardToDeck = (deckTitle, cardObject) => {
+//     return AsyncStorage.getItem(DECK_STORAGE_KEY).then(stringifiedDecks => {
+//         let decks = JSON.parse(stringifiedDecks);
+//         let deckKeys = Object.keys(decks);
+//
+//         deckKeys.forEach(deckKey => {
+//             let deck = decks[deckKey];
+//             if(deck.title === deckTitle)
+//                 deck.questions = [...deck.questions, cardObject]
+//         });
+//         let stringifiedUpdatedDecks = JSON.stringify(decks)
+//         AsyncStorage.setItem(DECK_STORAGE_KEY, stringifiedUpdatedDecks).catch(err => console.log(err))
+//         return Object.values(decks)
+//     }).catch(err => console.log(err))
+// }
