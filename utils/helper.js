@@ -41,12 +41,12 @@ export const addCardToDeck = async (deckTitle, cardObject) => {
       ["questions"]: [...selectedDeck.questions,cardObject]
     }
     console.log("!!!!!!!!!!!!!!! here is the selected deck object",selectedDeck)
-    return AsyncStorage.mergeItem(DECK_STORAGE_KEY, JSON.stringify(
-      {[deckTitle]:selectedDeck}
-    ))
-  })
-  .then(()=>getDecks())
-  .then((decks)=>{
-    console.log("DECK DECK DECK:", decks)
+    const boom = {[deckTitle]:selectedDeck}
+    console.log("this is what we are stringifying and addig",boom)
+    return AsyncStorage.mergeItem(DECK_STORAGE_KEY, JSON.stringify(boom))
     })
+    .then(()=>getDecks())
+  // .then((decks)=>{
+  //   console.log("DECK DECK DECK:", decks)
+  //   })
   }
