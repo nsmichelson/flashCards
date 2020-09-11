@@ -5,6 +5,7 @@ const DECK_STORAGE_KEY = "FlashCards:Decks"
 
 
 export const getDecks = () => {
+  console.log("RUNNING GET DECKS")
 //  console.log("what returning from getdecks",AsyncStorage.getItem(DECK_STORAGE_KEY))
   return AsyncStorage.getItem(DECK_STORAGE_KEY)
 
@@ -40,13 +41,8 @@ export const addCardToDeck = async (deckTitle, cardObject) => {
     selectedDeck = {...selectedDeck,
       ["questions"]: [...selectedDeck.questions,cardObject]
     }
-    console.log("!!!!!!!!!!!!!!! here is the selected deck object",selectedDeck)
     const boom = {[deckTitle]:selectedDeck}
-    console.log("this is what we are stringifying and addig",boom)
+    console.log("ABOUT TO MERGE IT!!!!")
     return AsyncStorage.mergeItem(DECK_STORAGE_KEY, JSON.stringify(boom))
     })
-    .then(()=>getDecks())
-  // .then((decks)=>{
-  //   console.log("DECK DECK DECK:", decks)
-  //   })
   }

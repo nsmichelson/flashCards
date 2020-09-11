@@ -14,12 +14,13 @@ class DeckDashboard extends React.Component {
       answer: 'Boomba Boom'
     }
     setInitialData()
-      .then(saveDeckTitle('Boom'))
-      .then(addCardToDeck('Boom',qToAdd))
+      .then(saveDeckTitle('Boooom'))
+      .then(addCardToDeck('Boooom',qToAdd))
+      .then(getDecks)
       .then(getDecks)
       .then((results)=>{
         const resultos = JSON.parse(results)
-        console.log("RESULTS are",resultos)
+        console.log("!!!!!!RESULTS!!!!! are",resultos)
         this.setState(()=>({
           initialData: resultos
         }))
