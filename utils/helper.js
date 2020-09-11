@@ -52,13 +52,6 @@ export const getStarted = async () => {
   try {
     return saveDeckTitle('Boooom')
     .then(addCardToDeck('Boooom',qToAdd))
-    .then(()=>{
-      console.log("should have addded the card")
-      return getDecks()})
-    .then((stringyDecks)=>{
-      console.log("what we got for stringdecks:",stringyDecks)
-      return JSON.parse(stringyDecks)
-    })
   }
   catch(e){
     console.log("Error is",e)
@@ -83,8 +76,15 @@ export const addCardToDeck = (key, values) => {
                 return results
                 //what if return the async line above????
             })
+            .then(()=>{
+              console.log("should have addded the card")
+              return getDecks()})
+            .then((stringyDecks)=>{
+              console.log("what we got for stringdecks:",stringyDecks)
+              return JSON.parse(stringyDecks)
+            })
 
-}
+          }
 
 
 

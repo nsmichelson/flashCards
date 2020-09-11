@@ -15,21 +15,28 @@ class DeckDashboard extends React.Component {
     this.setState(()=>({
       initialData: resultos
     }))
-
-
   }
   render(){
     const { initialData } = this.state
-    const deckers = Object.keys(initialData)
+
+    if(initialData !== null){
     return(
       <View>
-      {deckers.map((deck)=>{
+      {Object.keys(initialData).map((deck)=>{
           return (
             <Text key={deck}>{deck}</Text>
           )})}
       </View>
       )
     }
+    else{
+      return(
+        <View>
+        <Text>Not yet got intiial data</Text>
+        </View>
+      )
+    }
   }
+}
 
 export default DeckDashboard
