@@ -34,15 +34,19 @@ export const saveDeckTitle = (deckTitle) => {
 }
 
 
-export const addCardToDeck = (deckTitle, cardObject) => {
-  const selectedDeck = getDeck(deckTitle)
-  selectedDeck = [...selectedDeck.questions,cardObject]
-
-  AsyncStorage.mergeItem(DECK_STORAGE_KEY, JSON.stringify(
-    {[deckTitle]:selectedDeck}
-  ))
-  .then(()=>selectedDeck)
-  .catch((err)=>{
-    console.log("error is",error)
+export const addCardToDeck = async (deckTitle, cardObject) => {
+  return getDeck(deckTitle)
+  .then((selectedDeck)=> {
+    selectedDeck = {...selectedDeck,
+      ["questions"]: [...selectedDeck.questions,cardObject]
+    }
+    console.log("!!!!!!!!!!!!!!! here is the selected deck object",selectedDeck)
+    return AsyncStorage.mergeItem(DECK_STORAGE_KEY, JSON.stringify(
+      {[deckTitle]:selectedDeck}
+    ))
   })
-}
+  .then(()=>getDeck(deckTitle))
+  .then((deck)=>{
+    console.log("DECK DECK DECK:",deck)
+    })
+  }
