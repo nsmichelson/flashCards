@@ -22,10 +22,10 @@ export function addQuestion(question, deckTitle){
   }
 }
 
-export function addDeck (deckTitle){
+export function addDeck (deckID){
   return {
     type:ADD_DECK,
-    deckTitle
+    deckID
   }
 }
 
