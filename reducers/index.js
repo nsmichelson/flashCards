@@ -17,10 +17,25 @@ export default function deckReducer (state={},action){
                           ...question }
                }
      case ADD_DECK:
+      const { deckTitle } = action.deckTitle
+        return {
+          ...state,
+          [deckTitle]:{
+            deckTitle,
+            questions:[]
+          }
+        }
 
      case REMOVE_DECK:
+      const { deckTitle } = action.DeckTitle
+        return {
+        }
 
      case RESET:
+     state = {}
+      return {
+        state
+      }
 
       default:
         return state
