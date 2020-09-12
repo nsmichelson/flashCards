@@ -9,9 +9,11 @@ class DeckDashboard extends React.Component {
     initialData:{}
     }
 
-
   async componentDidMount(){
     const resultos = await getStarted()
+    setTimeout(()=>{
+      console.log("these are the results",resultos)
+    },4000)
       setTimeout(()=>{
         this.setState(()=>({
         initialData: resultos
