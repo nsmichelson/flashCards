@@ -40,7 +40,8 @@ class DeckDashboard extends React.Component {
 
 const mapStateToProps = (state) => {
   return (
-    {initialData:state}
+    {initialData:state
+    }
   )
 }
 
