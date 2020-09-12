@@ -18,10 +18,10 @@ class DeckDashboard extends React.Component {
   }
   render(){
 
-    if(this.state.initialData !== null){
+    if(this.props.initialData !== null){
     return(
       <View>
-      {Object.keys(this.state.initialData).map((deck)=>{
+      {Object.keys(this.props.initialData).map((deck)=>{
           return (
             <Text key={deck}>{deck}</Text>
           )})}
@@ -40,7 +40,7 @@ class DeckDashboard extends React.Component {
 
 const mapStateToProps = (state) => {
   return (
-    {decks:state}
+    {initialData:state}
   )
 }
 
