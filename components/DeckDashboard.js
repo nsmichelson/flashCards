@@ -13,11 +13,15 @@ class DeckDashboard extends React.Component {
     try {
     const resultos = await getStarted()
      try{
-      setTimeout(()=>{
+      if(resultos){
         this.setState(()=>({
         initialData: resultos
-      }))},2000)
+        }))
         }
+      else{
+        console.log("Just tried to set state but didn't have what needed")
+      }
+    }
       catch(e){
         console.log("inner error is:",e)
       }
