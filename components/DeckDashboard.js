@@ -10,24 +10,13 @@ class DeckDashboard extends React.Component {
     }
 
   async componentDidMount(){
-    try {
-    const resultos = await getStarted()
-     try{
-      if(resultos){
+    return await getStarted()
+    .then((resultos)=>{
+        console.log("in the changing state function, supposed to happen AFTER everything else")
         this.setState(()=>({
         initialData: resultos
         }))
-        }
-      else{
-        console.log("Just tried to set state but didn't have what needed")
-      }
-    }
-      catch(e){
-        console.log("inner error is:",e)
-      }
-    }catch(e){
-      console.log("outer error is",e)
-    }
+      })
   }
   render(){
 
