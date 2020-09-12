@@ -3,20 +3,18 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { getStarted, setInitialData, getDecks, getDeck, saveDeckTitle, addCardToDeck } from '../utils/helper.js'
 import { initialData } from '../utils/variables.js'
+import { handleInitialData } from '../actions/'
+import { connect } from 'react-redux'
+
 
 class DeckDashboard extends React.Component {
   state={
     initialData:{"fart":{title:"fart",questions:[]}}
     }
 
-  async componentDidMount(){
-    return await getStarted()
-    .then((resultos)=>{
-        console.log("in the changing state function, supposed to happen AFTER everything else")
-        this.setState(()=>({
-        initialData: resultos
-        }))
-      })
+  componentDidMount(){
+    this.props.handleInitialData()
+
   }
   render(){
 
@@ -40,4 +38,10 @@ class DeckDashboard extends React.Component {
   }
 }
 
-export default DeckDashboard
+const mapStateToProps = (state) => {
+  return (
+    {decks:state}
+  )
+}
+
+export default connect(mapStateToProps, {handleInitialData})(DeckDashboard)

@@ -11,16 +11,18 @@ import { createStore, applyMiddleware } from 'redux'
 
 const store = createStore(reducer, applyMiddleware(thunk,logger))
 
-export default function App() {
-  return (
-  <Provider store={store}>
-    <View style={styles.container}>
-      <DeckDashboard />
-      <StatusBar style="auto" />
-    </View>
-  </Provider>
-  );
-}
+export default class App extends React.Component {
+  render(){
+    return (
+      <Provider store={store}>
+        <View style={styles.container}>
+          <DeckDashboard />
+          <StatusBar style="auto" />
+        </View>
+      </Provider>
+      );
+    }
+  }
 
 const styles = StyleSheet.create({
   container: {
