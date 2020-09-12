@@ -9,12 +9,16 @@ import { Provider } from 'react-redux'
 import reducer from './reducers/'
 import { createStore, applyMiddleware } from 'redux'
 
+const store = createStore(reducer, applyMiddleware(thunk,logger))
+
 export default function App() {
   return (
+  <Provider store={store}>
     <View style={styles.container}>
       <DeckDashboard />
       <StatusBar style="auto" />
     </View>
+  </Provider>
   );
 }
 
