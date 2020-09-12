@@ -12,9 +12,11 @@ class DeckDashboard extends React.Component {
 
   async componentDidMount(){
     const resultos = await getStarted()
-    this.setState(()=>({
-      initialData: resultos
-    }))
+    console.log("about to change state")
+      this.setState(()=>({
+        initialData: resultos
+      }))
+
   }
   render(){
     const { initialData } = this.state
