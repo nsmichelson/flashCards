@@ -81,6 +81,7 @@ export const addCardToDeck = (key, values) => {
               return getDecks()})
             .then((stringyDecks)=>{
               console.log("what we got for stringdecks:",stringyDecks)
+              console.log("about to change state")
               return JSON.parse(stringyDecks)
             })
 

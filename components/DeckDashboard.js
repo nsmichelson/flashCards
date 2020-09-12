@@ -12,19 +12,17 @@ class DeckDashboard extends React.Component {
 
   async componentDidMount(){
     const resultos = await getStarted()
-    console.log("about to change state")
-      this.setState(()=>({
+      setTimeout(()=>{
+        this.setState(()=>({
         initialData: resultos
-      }))
-
+      }))},5000)
   }
   render(){
-    const { initialData } = this.state
 
-    if(initialData !== null){
+    if(this.state.initialData !== null){
     return(
       <View>
-      {Object.keys(initialData).map((deck)=>{
+      {Object.keys(this.state.initialData).map((deck)=>{
           return (
             <Text key={deck}>{deck}</Text>
           )})}
