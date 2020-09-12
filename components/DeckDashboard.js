@@ -10,14 +10,20 @@ class DeckDashboard extends React.Component {
     }
 
   async componentDidMount(){
+    try {
     const resultos = await getStarted()
-    setTimeout(()=>{
-      console.log("these are the results",resultos)
-    },4000)
+     try{
       setTimeout(()=>{
         this.setState(()=>({
         initialData: resultos
-      }))},5000)
+      }))},2000)
+        }
+      catch(e){
+        console.log("inner error is:",e)
+      }
+    }catch(e){
+      console.log("outer error is",e)
+    }
   }
   render(){
 
