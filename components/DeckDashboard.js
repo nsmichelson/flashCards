@@ -6,7 +6,7 @@ import { initialData } from '../utils/variables.js'
 
 class DeckDashboard extends React.Component {
   state={
-    initialData:{}
+    initialData:{"fart":{title:"fart",questions:[]}}
     }
 
   async componentDidMount(){
