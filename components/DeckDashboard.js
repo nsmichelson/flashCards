@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import { handleInitialData } from '../actions/'
 import { connect } from 'react-redux'
 import { AsyncStorage } from 'react-native'
@@ -10,7 +10,7 @@ import DeckSummaryCard from './deckSummaryCard.js'
 
 class DeckDashboard extends React.Component {
   state={
-    initialData:{}
+    ready: true
     }
 
   componentDidMount(){
@@ -18,21 +18,23 @@ class DeckDashboard extends React.Component {
 
   }
   render(){
+    const { initialData } = this.props
 
-    if(this.props.initialData !== null){
+    if(initialData !== null){
     return(
-      <View>
-      {Object.keys(this.props.initialData).map((deck)=>{
-          return (
-            <DeckSummaryCard deckTitle="test" key={deck}>{deck}</DeckSummaryCard>
-          )})}
-      </View>
+      <ScrollView>
+        {Object.keys(initialData).map((deck)=>{
+            const { title } = initialData[deck]
+            return (
+              <DeckSummaryCard deckTitle={title} key={deck} />
+            )})}
+      </ScrollView>
       )
     }
     else{
       return(
         <View>
-        <Text>Not yet got intiial data</Text>
+          <Text>Not yet got intiial data</Text>
         </View>
       )
     }
