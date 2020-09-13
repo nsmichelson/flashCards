@@ -6,10 +6,20 @@ const DECK_STORAGE_KEY = "FlashCards:Decks"
 
 export const getDecks = () => {
   console.log("RUNNING GET DECKS")
-//  console.log("what returning from getdecks",AsyncStorage.getItem(DECK_STORAGE_KEY))
   return AsyncStorage.getItem(DECK_STORAGE_KEY)
+  .then((result)=>{
+      if(result===null){
+        AsyncStorage.setItem(DECK_STORAGE_KEY,JSON.stringify(starterDecks))
+      }
+      return result === null ? starterDecks : JSON.parse(result)
+          })
+      }
 
-}
+
+//  console.log("what returning from getdecks",AsyncStorage.getItem(DECK_STORAGE_KEY))
+
+
+
 
 export const setInitialData = () => {
   let initialData = starterDecks
