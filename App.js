@@ -10,6 +10,7 @@ import logger from 'redux-logger'
 import { Provider } from 'react-redux'
 import reducer from './reducers/'
 import { createStore, applyMiddleware } from 'redux'
+import Navigator from './navigation/navigator.js'
 
 
 
