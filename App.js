@@ -1,3 +1,5 @@
+import 'react-native-gesture-handler';
+
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
@@ -8,6 +10,8 @@ import logger from 'redux-logger'
 import { Provider } from 'react-redux'
 import reducer from './reducers/'
 import { createStore, applyMiddleware } from 'redux'
+import Navigator from './navigation/navigator.js'
+
 
 
 const store = createStore(reducer, applyMiddleware(thunk,logger))
@@ -17,8 +21,9 @@ export default class App extends React.Component {
     return (
       <Provider store={store}>
         <View style={styles.container}>
+          <Navigator />
           <DeckDashboard />
-          <StatusBar style="auto" />
+        //  <StatusBar style="auto" />
         </View>
       </Provider>
       );
