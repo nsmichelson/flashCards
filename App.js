@@ -9,6 +9,7 @@ import { Provider } from 'react-redux'
 import reducer from './reducers/'
 import { createStore, applyMiddleware } from 'redux'
 
+
 const store = createStore(reducer, applyMiddleware(thunk,logger))
 
 export default class App extends React.Component {
@@ -27,7 +28,7 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
   },

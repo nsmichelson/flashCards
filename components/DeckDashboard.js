@@ -5,6 +5,8 @@ import { handleInitialData } from '../actions/'
 import { connect } from 'react-redux'
 import { AsyncStorage } from 'react-native'
 import DeckSummaryCard from './deckSummaryCard.js'
+import { LinearGradient } from 'expo-linear-gradient';
+
 
 
 class DeckDashboard extends React.Component {
@@ -22,7 +24,12 @@ class DeckDashboard extends React.Component {
 
     if(initialData !== null){
     return(
-      <ScrollView style={styles.container}>
+      <ScrollView contentContainerStyle={styles.center} style={styles.container} >
+       <LinearGradient
+            colors={['rgba(255, 0, 255,0.3)', 'purple']}
+            style={styles.gradientBox}
+          />
+
         {Object.keys(initialData).map((deck)=>{
             const { title } = initialData[deck]
             return (
@@ -47,15 +54,22 @@ class DeckDashboard extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  center:{
+    alignItems:'center'
+  },
   container: {
     flex:1,
     marginTop:60,
-    paddingTop:80,
-    paddingLeft:20,
-    paddingRight:20,
-    paddingBottom:20,
-    backgroundColor:'purple'
-  }
+    backgroundColor:'purple',
+    width:300,
+  },
+  gradientBox: {
+      position: 'absolute',
+      left: 0,
+      right: 0,
+      top: 0,
+      height: 500
+    }
 })
 
 const mapStateToProps = (state) => {
