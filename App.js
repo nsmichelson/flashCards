@@ -20,9 +20,11 @@ export default class App extends React.Component {
   render(){
     return (
       <Provider store={store}>
-        <View style={styles.container}>
-          <DeckDashboard />
-        </View>
+        <Navigator>
+          <View style={styles.container}>
+            <DeckDashboard />
+          </View>
+        </Navigator>
       </Provider>
       );
     }
