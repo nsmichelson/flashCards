@@ -14,16 +14,15 @@ const Tabs = createBottomTabNavigator()
 const NavTabs = () => (
   <Tabs.Navigator>
     <Tabs.Screen name="DeckDashboard" component={DeckDashboard} />
+    <Tabs.Screen name="AddDeck" component={AddDeck}/>
   </Tabs.Navigator>
 )
-
-//  //    <Stack.Screen name="Deck Details" component={DeckDetails}/>
-//  <Tabs.Screen name="AddDeck" component={AddDeck}/>
 
 
 const NavStack = () => (
     <Stack.Navigator>
-      <Stack.Screen name="Home" component={NavTabs} />
+      <Stack.Screen name="NavTabs" component={NavTabs} />
+      <Stack.Screen name="DeckDetails" component={DeckDetails}/>
     </Stack.Navigator>
  )
 
