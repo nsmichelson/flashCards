@@ -15,8 +15,8 @@ class DeckDetails extends React.Component {
 
   return(
     <View>
-      <Text style={{color:"white"}}>{deck.title}</Text>
-      <Text style={{color:"white"}}>{deck.questions.length} cards</Text>
+      <Text style={{color:"white", fontSize:50, alignSelf:'center'}}>{deck.title}</Text>
+      <Text style={{color:"white", fontSize:30, alignSelf:'center'}}>{deck.questions.length} cards</Text>
       <Button
         onPress={this.onPressQuiz}
         title="Quiz Me"
