@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavigationContainer } from '@react-navigation/native'
+import { NavigationContainer, DarkTheme } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import  DeckDashboard from '../components/DeckDashboard.js'
@@ -14,24 +14,24 @@ const Tabs = createBottomTabNavigator()
 
 const NavTabs = () => (
   <Tabs.Navigator>
-    <Tabs.Screen name="DeckDashboard" component={DeckDashboard} />
-    <Tabs.Screen name="AddDeck" component={AddDeck}/>
+    <Tabs.Screen name="Deck Dashboard" component={DeckDashboard} />
+    <Tabs.Screen name="Add Deck" component={AddDeck}/>
   </Tabs.Navigator>
 )
 
 
 const NavStack = () => (
     <Stack.Navigator>
-      <Stack.Screen name="NavTabs" component={NavTabs} />
-      <Stack.Screen name="DeckDetails" component={DeckDetails}/>
+      <Stack.Screen name="Home" component={NavTabs} />
+      <Stack.Screen name="Deck Details" component={DeckDetails}/>
     </Stack.Navigator>
  )
 
 
-export default class Navigator extends React.Component {
+export default class DaNavigator extends React.Component {
   render(){
     return (
-      <NavigationContainer>
+      <NavigationContainer theme={DarkTheme}>
         <NavStack />
       </NavigationContainer>
     )

@@ -20,7 +20,7 @@ export default class App extends React.Component {
   render(){
     return (
       <Provider store={store}>
-        <Navigator>
+        <Navigator style={styles.container}>
           <View style={styles.container}>
             <DeckDashboard />
           </View>
@@ -36,5 +36,5 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
-  },
+  }
 });

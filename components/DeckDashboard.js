@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import { AsyncStorage } from 'react-native'
 import DeckSummaryCard from './deckSummaryCard.js'
 import { LinearGradient } from 'expo-linear-gradient';
+import DeckDetails from './DeckDetails.js'
 
 
 
@@ -35,6 +36,7 @@ class DeckDashboard extends React.Component {
             return (
               <TouchableOpacity
                 key={deck}
+                onPress={() => this.props.navigation.navigate('Deck Details', {deck:deck})}
                 >
                 <DeckSummaryCard deckTitle={title}  />
               </TouchableOpacity>
@@ -61,7 +63,7 @@ const styles = StyleSheet.create({
     flex:1,
     marginTop:60,
     backgroundColor:'purple',
-    width:300,
+    width:370,
   },
   gradientBox: {
       position: 'absolute',
