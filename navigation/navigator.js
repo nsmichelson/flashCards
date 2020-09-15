@@ -5,6 +5,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import  DeckDashboard from '../components/DeckDashboard.js'
 import AddDeck from '../components/AddDeck.js'
 import DeckDetails from '../components/DeckDetails.js'
+import DeckQuiz from '../components/DeckQuiz.js'
+import AddQuestion from '../components/AddQuestion.js'
 import { Ionicons } from '@expo/vector-icons'
 
 
@@ -24,6 +26,8 @@ const NavStack = () => (
     <Stack.Navigator>
       <Stack.Screen name="Home" component={NavTabs} />
       <Stack.Screen name="Deck Details" component={DeckDetails}/>
+      <Stack.Screen name="Deck Quiz" component={DeckQuiz} />
+      <Stack.Screen name="Add Question" component={AddQuestion} />
     </Stack.Navigator>
  )
 

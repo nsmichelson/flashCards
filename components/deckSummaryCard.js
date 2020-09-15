@@ -6,9 +6,7 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 const DeckSummaryCard = (props) => {
   return (
     <View style={styles.summaryCard}>
-
       <Text style={{fontSize:30}}>{props.deckTitle}</Text>
-
     </View>
   )
 }
