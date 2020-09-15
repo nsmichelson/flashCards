@@ -7,7 +7,7 @@ const DeckSummaryCard = (props) => {
   return (
     <View style={styles.summaryCard}>
 
-      <Text>This is a deck card for {props.deckTitle}</Text>
+      <Text style={{fontSize:30}}>{props.deckTitle}</Text>
 
     </View>
   )

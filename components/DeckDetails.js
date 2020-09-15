@@ -10,7 +10,8 @@ class DeckDetails extends React.Component {
 
   return(
     <View>
-      <Text style={{color:"white"}}>{this.props.route.params.deck}</Text>
+      <Text style={{color:"white"}}>{this.props.deck.title}</Text>
+      <Text style={{color:"white"}}>{this.props.deck.questions.length} cards</Text>
     </View>
     )
   }
@@ -20,10 +21,10 @@ const mapStateToProps = (state, {route}) => {
 
   const title = route.params.deck
   const deck = state[title]
-  return ({
-    deck:deck
-    })
-  }
+    return ({
+      deck:deck
+      })
+    }
 
 
 export default connect(mapStateToProps)(DeckDetails)
