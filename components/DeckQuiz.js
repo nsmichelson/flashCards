@@ -8,8 +8,18 @@ class DeckQuiz extends React.Component {
     numCorrect:0,
     showAnswer:false
   }
+  onPressFlip = () => {
+    console.log("Press happened")
+    console.log("This is the current state",this.state.showAnswer)
+      this.setState((prevState)=>{
+        console.log("what is prevState",prevState)
+        const newState = !prevState.showAnswer
+        console.log("this is the new state",newState)
+        return {
+          showAnswer: newState}
+      })
+    }
   render(){
-    console.log("props props props props", this.props)
     const { deck } = this.props.route.params
     const questionKeys = Object.keys(deck.questions)
 
@@ -33,7 +43,7 @@ class DeckQuiz extends React.Component {
             color="green"
             />
           <Button
-            onPress={this.onPressCorrect}
+            onPress={this.onPressIncorrect}
             title="Mark Incorrect"
             color="red"
             />
