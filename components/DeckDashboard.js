@@ -16,7 +16,7 @@ class DeckDashboard extends React.Component {
     }
 
   componentDidMount(){
-    this.props.dispatch(handleInitialData())
+    this.props.handleInitialData()
   }
 
   render(){
@@ -82,4 +82,4 @@ const mapStateToProps = (state) => {
   )
 }
 
-export default connect(mapStateToProps)(DeckDashboard)
+export default connect(mapStateToProps, {handleInitialData})(DeckDashboard)
