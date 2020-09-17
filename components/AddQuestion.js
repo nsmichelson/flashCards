@@ -41,21 +41,37 @@ render(){
           style={{fontSize:30,color:'blue',backgroundColor:'white'}}
           value={this.state.textQ}
           onChangeText={this.handleChangeTextQ}
+          selectTextOnFocus={true}
         />
         <View style={{marginBottom:30}}></View>
         <TextInput
           style={{fontSize:30,color:'blue',backgroundColor:'white'}}
           value={this.state.textA}
           onChangeText={this.handleChangeTextA}
+          selectTextOnFocus={true}
         />
-        <Button
-          onPress={this.handleSubmit}
-          title="Create New Question"
-          color="orange"
-          />
-    </View>
-      )
+        <TouchableOpacity
+                style={{
+                marginTop:50,
+                width:250,
+                alignSelf:'center',
+                backgroundColor:'black',
+                borderColor:'orange',
+                padding:20,
+                borderRadius:30,
+                borderWidth:2,
+                justifyContent: 'center',
+                alignItems:'center'
+                }}
+                onPress = {this.handleSubmit}
+                >
+          <Text style={{fontSize:20,color:'orange'}}>Add Question To Deck</Text>
+        </TouchableOpacity>
+
+
+      </View>
+        )
+      }
     }
-  }
 
 export default connect()(AddQuestion)
