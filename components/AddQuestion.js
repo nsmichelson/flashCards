@@ -11,7 +11,7 @@ state={
 handleSubmit = () => {
   const { deck } = this.props.route.params
   const { textQ, textA } = this.state
-  const {navigation} = this.props.navigation
+  const {navigation} = this.props
   const qObjectToSubmit = {
     question:textQ,
     answer:textA

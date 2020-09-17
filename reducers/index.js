@@ -15,7 +15,7 @@ export default function deckReducer (state={},action){
           [deckTitle]:{
             ...state[deckTitle],
             questions:[...state[deckTitle].questions,
-                          ...question]
+                          question]
                         }
                }
      case ADD_DECK:
