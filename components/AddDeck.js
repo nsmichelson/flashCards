@@ -17,14 +17,22 @@ class AddDeck extends React.Component {
       })
     }
   handleSubmit = () => {
-    console.log("this is the text", this.state,"!!!!")
-    this.props.dispatch(addDeck(this.state.text))
+    const { navigation } = this.props
+    const { text } = this.state
+    this.props.dispatch(addDeck(text))
+
+    this.setState(()=>{
+      return({
+        text:''
+      })
+    })
+
+    navigation.goBack()
   }
   render(){
     return(
       <View>
         <View style={{fontSize:30,color:'white'}}>
-          <Text style={{fontSize:30,color:'white'}}>This state:{this.state.text}</Text>
           <Text style={{fontSize:45,color:'white'}}>
           What is the title of this deck?</Text>
             <TextInput

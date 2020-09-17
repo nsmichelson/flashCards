@@ -17,7 +17,6 @@ class DeckDashboard extends React.Component {
 
   componentDidMount(){
     this.props.handleInitialData()
-
   }
 
   render(){
@@ -25,6 +24,7 @@ class DeckDashboard extends React.Component {
 
     if(initialData !== null){
     return(
+      <View  style={{flex: 1}}>
       <ScrollView contentContainerStyle={styles.center} style={styles.container} >
        <LinearGradient
             colors={['rgba(255, 0, 255,0.3)', 'purple']}
@@ -43,6 +43,7 @@ class DeckDashboard extends React.Component {
 
             )})}
       </ScrollView>
+      </View>
       )
     }
     else{
