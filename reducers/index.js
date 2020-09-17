@@ -22,7 +22,7 @@ export default function deckReducer (state={},action){
         return {
           ...state,
           [deckID]:{
-            deckID,
+            title:deckID,
             questions:[]
           }
         }
