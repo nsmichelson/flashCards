@@ -6,24 +6,48 @@ class DeckQuiz extends React.Component {
   state={
     currentQuestion:0,
     numCorrect:0,
-    showAnswer:false
+    showAnswer:false,
+    total:0
   }
+
+  componentDidMount(){
+    const { deck } = this.props.route.params
+
+    const totalQ = deck.questions.length
+    this.setState(()=>{
+      return ({
+      total: totalQ
+      })
+    })}
+
   onPressFlip = () => {
-    console.log("Press happened")
-    console.log("This is the current state",this.state.showAnswer)
-      this.setState((prevState)=>{
-        console.log("what is prevState",prevState)
-        const newState = !prevState.showAnswer
-        console.log("this is the new state",newState)
+      this.setState( ({showAnswer}) =>{
         return {
-          showAnswer: newState}
+          showAnswer: !showAnswer}
       })
     }
+  onPressCorrect = () => {
+    this.setState( ({numCorrect, currentQuestion}) =>{
+      return {
+        currentQuestion: currentQuestion + 1,
+        numCorrect: numCorrect + 1
+      }
+    })
+  }
+  onPressIncorrect = () => {
+    this.setState( ({numCorrect, currentQuestion}) =>{
+      return {
+        currentQuestion: currentQuestion + 1,
+        numCorrect: numCorrect
+      }
+    })
+  }
   render(){
     const { deck } = this.props.route.params
     const questionKeys = Object.keys(deck.questions)
 
-    let { showAnswer, currentQuestion, numCorrect } = this.state
+    let { showAnswer, currentQuestion, numCorrect, total } = this.state
+    if(currentQuestion!==total){
     return (
       <View>
         {showAnswer===true ?
@@ -31,6 +55,7 @@ class DeckQuiz extends React.Component {
         :
           <Text style={{fontSize:30, color:'white'}}>{deck.questions[currentQuestion].question}</Text>
         }
+
         <Button
           onPress={this.onPressFlip}
           title={showAnswer ? "Flip to Question" : "Flip to Answer"}
@@ -46,12 +71,19 @@ class DeckQuiz extends React.Component {
             onPress={this.onPressIncorrect}
             title="Mark Incorrect"
             color="red"
-            />
+          />
         </View>
+        <Text style={{fontSize:30, color:'white'}}>Total Correct:{numCorrect} of {currentQuestion}</Text>
       </View>
       )
     }
+    else{
+      return(
+        <Text style={{fontSize:30, color:'white'}}>You finished the deck!</Text>
+      )
+    }
   }
+}
 
 
 
