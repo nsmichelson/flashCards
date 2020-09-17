@@ -9,6 +9,7 @@ export default function deckReducer (state={},action){
       };
      case ADD_QUESTION:
        const { question, deckTitle } = action;
+       console.log("IN THE REDUCERS FOR ADD QUESTION:",question,deckTitle)
         return {
           ...state,
           [deckTitle]:{
