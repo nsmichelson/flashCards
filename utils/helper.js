@@ -86,13 +86,6 @@ export const addCardToDeck = (key, values) => {
                 return results
                 //what if return the async line above????
             })
-            .then(()=>{
-              console.log("should have addded the card")
-              return getDecks()})
-            .then((stringyDecks)=>{
-              console.log("what we got for stringdecks:",stringyDecks)
-              return JSON.parse(stringyDecks)
-            })
 
           }
 

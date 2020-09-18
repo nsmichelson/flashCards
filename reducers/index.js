@@ -20,6 +20,7 @@ export default function deckReducer (state={},action){
                }
      case ADD_DECK:
       const { deckID } = action
+      console.log("THJasdASDASDSADJSAODJSAIDJSAOSJDASODSAONFODSNFOASJDSAODJSAODJSA")
         return {
           ...state,
           [deckID]:{

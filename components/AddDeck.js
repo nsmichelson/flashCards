@@ -2,6 +2,7 @@ import React from 'react'
 import {View, Text, StyleSheet,Button, TextInput} from 'react-native'
 import { connect } from 'react-redux'
 import { addDeck } from '../actions/'
+import { saveDeckTitle } from '../utils/helper.js'
 
 
 class AddDeck extends React.Component {
@@ -19,8 +20,10 @@ class AddDeck extends React.Component {
   handleSubmit = () => {
     const { navigation } = this.props
     const { text } = this.state
-    this.props.dispatch(addDeck(text))
-
+    saveDeckTitle(text)
+    .then(()=>{
+      this.props.dispatch(addDeck(text))
+    })
     this.setState(()=>{
       return({
         text:''

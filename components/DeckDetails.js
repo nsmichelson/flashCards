@@ -14,7 +14,7 @@ class DeckDetails extends React.Component {
     const { deck } = this.props
 
   return(
-    <View>
+    <View style={{flex:1,justifyContent:'center',alignItems:'center',marginTop:-80}}>
       <Text style={{color:"white", fontSize:50, alignSelf:'center'}}>{deck.title}</Text>
       <Text style={{color:"white", fontSize:30, alignSelf:'center'}}>{deck.questions.length} cards</Text>
       <Button
