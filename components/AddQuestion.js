@@ -2,6 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { StyleSheet, Text, View, TouchableOpacity, Button, TextInput } from 'react-native';
 import { addQuestion } from '../actions/'
+import { addCardToDeck } from '../utils/helper.js'
+
 
 class AddQuestion extends React.Component{
 state={
@@ -16,7 +18,10 @@ handleSubmit = () => {
     question:textQ,
     answer:textA
   }
-  this.props.dispatch(addQuestion(qObjectToSubmit,deck.title))
+  addCardToDeck(deck.title, qObjectToSubmit)
+  .then(()=>{
+    this.props.dispatch(addQuestion(qObjectToSubmit,deck.title))
+  })
   navigation.goBack()
 }
 handleChangeTextQ= (textQ) =>{

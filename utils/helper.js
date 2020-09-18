@@ -82,8 +82,7 @@ export const addCardToDeck = (key, values) => {
               console.log("IN ADD CARD TO DECK FUNCTION- 3")
               console.log("This is results and this is key",results,key)
                 results[key].questions.push(values)
-                AsyncStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(results))
-                return results
+                return AsyncStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(results))
                 //what if return the async line above????
             })
 
