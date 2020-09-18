@@ -1,5 +1,6 @@
 import React from 'react'
-import { Notifications, Permission} from 'expo'
+import { Notifications } from 'expo'
+import * as Permissions from 'expo-permissions'
 import { View, StyleSheet, AsyncStorage } from 'react-native'
 
 const NOTIFICATION_KEY = "FlashCards:notifications"
@@ -20,6 +21,11 @@ function createNotification () {
   }
 }
 
+export function clearLocalNotification () {
+  return AsyncStorage.removeItem(NOTIFICATION_KEY)
+    .then(Notifications.cancelAllScheduledNotificationsAsync)
+}
+
 export function setLocalNotification () {
   AsyncStorage.getItem(NOTIFICATION_KEY)
     .then(JSON.parse)
@@ -35,7 +41,7 @@ export function setLocalNotification () {
               tomorrow.setHours(8)
               tomorrow.setMinutes(0)
 
-              Notifications.scheduleLocalNotificationsAsync(
+              Notifications.scheduleLocalNotificationAsync(
                 createNotification(),
                 {
                   time:tomorrow,
