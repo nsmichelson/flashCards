@@ -38,7 +38,8 @@ class DeckQuiz extends React.Component {
     this.setState( ({numCorrect, currentQuestion}) =>{
       return {
         currentQuestion: currentQuestion + 1,
-        numCorrect: numCorrect
+        numCorrect: numCorrect,
+        showAnswer:false
       }
     })
   }
@@ -50,18 +51,23 @@ class DeckQuiz extends React.Component {
     if(currentQuestion!==total){
     return (
       <View>
+        <View style={{marginBottom:40}}></View>
+
         {showAnswer===true ?
           <Text style={{fontSize:30, color:'white'}}>{deck.questions[currentQuestion].answer}</Text>
         :
           <Text style={{fontSize:30, color:'white'}}>{deck.questions[currentQuestion].question}</Text>
         }
+        <View style={{marginBottom:40}}></View>
 
         <Button
           onPress={this.onPressFlip}
           title={showAnswer ? "Flip to Question" : "Flip to Answer"}
           color="orange"
           />
-        <View style={{flexDirection:'row'}}>
+          <View style={{marginBottom:40}}></View>
+
+        <View style={{flexDirection:'row', alignSelf:'center'}}>
           <Button
             onPress={this.onPressCorrect}
             title="Mark Correct"
@@ -73,13 +79,18 @@ class DeckQuiz extends React.Component {
             color="red"
           />
         </View>
+        <View style={{marginBottom:40}}></View>
+
         <Text style={{fontSize:30, color:'white'}}>Total Correct:{numCorrect} of {currentQuestion}</Text>
       </View>
       )
     }
     else{
       return(
-        <Text style={{fontSize:30, color:'white'}}>You finished the deck!</Text>
+        <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
+          <Text style={{fontSize:30, color:'white',marginBottom:10}}>You finished the deck!</Text>
+          <Text style={{fontSize:30, color:'white'}}>Total Correct:{numCorrect} of {currentQuestion}</Text>
+        </View>
       )
     }
   }

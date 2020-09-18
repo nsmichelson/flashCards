@@ -36,16 +36,17 @@ handleChangeTextQ= (textQ) =>{
 render(){
   console.log("Checking the props in addQ",this.props)
   return (
-    <View>
+    <View style={{alignItems:'center',justifyContent:'center'}}>
+    <View style={{marginBottom:140}}></View>
         <TextInput
-          style={{fontSize:30,color:'blue',backgroundColor:'white'}}
+          style={{fontSize:20,color:'orange',backgroundColor:'white',padding:10,width:300}}
           value={this.state.textQ}
           onChangeText={this.handleChangeTextQ}
           selectTextOnFocus={true}
         />
         <View style={{marginBottom:30}}></View>
         <TextInput
-          style={{fontSize:30,color:'blue',backgroundColor:'white'}}
+          style={{fontSize:20,color:'orange',backgroundColor:'white',padding:10,width:300}}
           value={this.state.textA}
           onChangeText={this.handleChangeTextA}
           selectTextOnFocus={true}
