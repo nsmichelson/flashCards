@@ -1,11 +1,16 @@
 import React from 'react'
 import {View, Text, StyleSheet, Button} from 'react-native'
 import { connect } from 'react-redux'
+import { clearLocalNotification, setLocalNotification } from '../utils/notification.js'
 
 
 class DeckDetails extends React.Component {
   onPressQuiz = () =>{
     this.props.navigation.navigate('Deck Quiz', {deck:this.props.deck})
+    //when press quiz clear and reset notification reminder
+    clearLocalNotification()
+    .then(setLocalNotification)
+
   }
   onPressAddCard = () => {
     this.props.navigation.navigate('Add Question', {deck:this.props.deck})
