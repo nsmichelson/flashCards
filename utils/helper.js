@@ -16,21 +16,21 @@ export const getDecks = () => {
 
 
 
-
 export const setInitialData = () => {
   let initialData = starterDecks
   return AsyncStorage.setItem(DECK_STORAGE_KEY,JSON.stringify(initialData))
 }
 
 export async function getDeck(title) {
-  try {
-    const storageResults = await AsyncStorage.getItem(DECK_STORAGE_KEY);
-
+  AsyncStorage.getItem(DECK_STORAGE_KEY)
+  .then((storageResults )=>{
     return JSON.parse(storageResults)[title];
-  } catch (error) {
-    console.log(error);
-  }
+  })
+  .catch((error)=>{
+    console.log("error is:",error)
+  })
 }
+
 
 export const saveDeckTitle = (deckTitle) => {
   const newDeckObject =
@@ -41,20 +41,6 @@ export const saveDeckTitle = (deckTitle) => {
   return AsyncStorage.mergeItem(DECK_STORAGE_KEY, JSON.stringify(newDeckObject))
 }
 
-
-export const getStarted = async () => {
-  const qToAdd = {
-    question: 'Boom?',
-    answer: 'Boomba Boom'
-  }
-  try {
-    return saveDeckTitle('Boooom')
-    .then(addCardToDeck('Boooom',qToAdd))
-  }
-  catch(e){
-    console.log("Error is",e)
-  }
-}
 
 
 export const addCardToDeck = (key, values) => {
