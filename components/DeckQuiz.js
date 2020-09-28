@@ -26,6 +26,14 @@ class DeckQuiz extends React.Component {
           showAnswer: !showAnswer}
       })
     }
+  onPressRestartQuiz = () => {
+      this.setState( ({numCorrect, currentQuestion}) =>{
+        return {
+          currentQuestion: 0,
+          numCorrect: 0
+        }
+      })
+    }
   onPressCorrect = () => {
     this.setState( ({numCorrect, currentQuestion}) =>{
       return {
@@ -49,6 +57,7 @@ class DeckQuiz extends React.Component {
 
     let { showAnswer, currentQuestion, numCorrect, total } = this.state
     if(currentQuestion!==total){
+      // e 'Restart Quiz' and 'Back to Deck'
     return (
       <View>
         <View style={{marginBottom:40}}></View>
@@ -90,6 +99,18 @@ class DeckQuiz extends React.Component {
         <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
           <Text style={{fontSize:30, color:'white',marginBottom:10}}>You finished the deck!</Text>
           <Text style={{fontSize:30, color:'white'}}>Total Correct:{numCorrect} of {currentQuestion}</Text>
+          <View style={{flexDirection:'row', alignSelf:'center'}}>
+            <Button
+              onPress={this.onPressRestartQuiz}
+              title="Restart Quiz"
+              color="purple"
+              />
+            <Button
+              onPress={this.onPressIncorrect}
+              title="Back To Deck"
+              color="orange"
+            />
+          </View>
         </View>
       )
     }
