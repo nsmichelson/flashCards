@@ -13,4 +13,4 @@ To get started:
 
 ## Contributing
 
-Utilized Udacity's knowledge centre.
+Utilized Udacity's knowledge centre when ran into errors and had questions.
