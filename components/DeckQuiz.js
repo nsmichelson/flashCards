@@ -34,6 +34,9 @@ class DeckQuiz extends React.Component {
         }
       })
     }
+    onPressBack = () => {
+        this.props.navigation.goBack()
+      }
   onPressCorrect = () => {
     this.setState( ({numCorrect, currentQuestion}) =>{
       return {
@@ -106,7 +109,7 @@ class DeckQuiz extends React.Component {
               color="purple"
               />
             <Button
-              onPress={this.onPressIncorrect}
+              onPress={this.onPressBack}
               title="Back To Deck"
               color="orange"
             />
