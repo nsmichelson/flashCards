@@ -73,8 +73,6 @@ render(){
                 >
           <Text style={{fontSize:20,color:'orange'}}>Add Question To Deck</Text>
         </TouchableOpacity>
-
-
       </View>
         )
       }

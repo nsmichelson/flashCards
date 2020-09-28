@@ -60,7 +60,6 @@ class DeckQuiz extends React.Component {
 
     let { showAnswer, currentQuestion, numCorrect, total } = this.state
     if(currentQuestion!==total){
-      // e 'Restart Quiz' and 'Back to Deck'
     return (
       <View>
         <View style={{marginBottom:40}}></View>

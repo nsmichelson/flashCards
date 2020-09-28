@@ -46,7 +46,6 @@ export function handleInitialData(){
   return dispatch => {
     return getDecks()
       .then((decks)=>{
-        console.log("OH HEEEEEYEYYYYYYYYYYYYYYYYY here is what we have for decks:",decks)
         dispatch(receiveDecks(decks))
       })
     }
