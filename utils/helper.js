@@ -5,7 +5,6 @@ const DECK_STORAGE_KEY = "FlashCards:Decks"
 
 
 export const getDecks = () => {
-  console.log("RUNNING GET DECKS")
   return AsyncStorage.getItem(DECK_STORAGE_KEY)
   .then((result)=>{
       if(result===null){
@@ -23,13 +22,13 @@ export const setInitialData = () => {
   return AsyncStorage.setItem(DECK_STORAGE_KEY,JSON.stringify(initialData))
 }
 
-export async function getDeck(id) {
+export async function getDeck(title) {
   try {
-    const storeResults = await AsyncStorage.getItem(DECK_STORAGE_KEY);
+    const storageResults = await AsyncStorage.getItem(DECK_STORAGE_KEY);
 
-    return JSON.parse(storeResults)[id];
-  } catch (err) {
-    console.log(err);
+    return JSON.parse(storageResults)[title];
+  } catch (error) {
+    console.log(error);
   }
 }
 
@@ -59,17 +58,13 @@ export const getStarted = async () => {
 
 
 export const addCardToDeck = (key, values) => {
-      console.log("IN ADD CARD TO DECK FUNCTION")
       return AsyncStorage.getItem(DECK_STORAGE_KEY)
 
             .then((results) =>{
-              console.log("IN ADD CARD TO DECK FUNCTION- 2")
               return JSON.parse(results)
 
             })
             .then( (results) => {
-              console.log("IN ADD CARD TO DECK FUNCTION- 3")
-              console.log("This is results and this is key",results,key)
                 results[key].questions.push(values)
                 return AsyncStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(results))
             })
