@@ -33,12 +33,13 @@ class DeckDashboard extends React.Component {
 
         {Object.keys(initialData).map((deck)=>{
             const { title } = initialData[deck]
+            const numinDeck = initialData[deck].questions.length
             return (
               <TouchableOpacity
                 key={deck}
                 onPress={() => this.props.navigation.navigate('Deck Details', {deck:deck})}
                 >
-                <DeckSummaryCard deckTitle={title}  />
+                <DeckSummaryCard deckTitle={title} num={numinDeck} />
               </TouchableOpacity>
 
             )})}
