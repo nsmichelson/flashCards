@@ -41,15 +41,16 @@ class DeckDashboard extends React.Component {
             const numinDeck = initialData[deck].questions.length
             return (
               <Animated.View
-                style={{width}}>
+                style={{width}}
+                key={title}
+                >
               <TouchableOpacity
-                key={deck}
                 onPress={() => {
                   this.props.navigation.navigate('Deck Details', {deck:deck})
                   }
                 }
                 >
-                <DeckSummaryCard deckTitle={title} num={numinDeck} />
+                <DeckSummaryCard  deckTitle={title} num={numinDeck} />
               </TouchableOpacity>
               </Animated.View>
 
