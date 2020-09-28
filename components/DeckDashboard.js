@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Animated } from 'react-native';
 import { handleInitialData } from '../actions/'
 import { connect } from 'react-redux'
 import { AsyncStorage } from 'react-native'
@@ -12,15 +12,20 @@ import DeckDetails from './DeckDetails.js'
 
 class DeckDashboard extends React.Component {
   state={
-    ready: true
+    width: new Animated.Value(200),
     }
 
   componentDidMount(){
     this.props.handleInitialData()
+    const { width }  = this.state
+    Animated.spring(width, { toValue: 300, speed:3, useNativeDriver:false}).start()
+
+
   }
 
   render(){
     const { initialData } = this.props
+    const { width, height } = this.state
 
     if(initialData !== null){
     return(
@@ -35,12 +40,18 @@ class DeckDashboard extends React.Component {
             const { title } = initialData[deck]
             const numinDeck = initialData[deck].questions.length
             return (
+              <Animated.View
+                style={{width}}>
               <TouchableOpacity
                 key={deck}
-                onPress={() => this.props.navigation.navigate('Deck Details', {deck:deck})}
+                onPress={() => {
+                  this.props.navigation.navigate('Deck Details', {deck:deck})
+                  }
+                }
                 >
                 <DeckSummaryCard deckTitle={title} num={numinDeck} />
               </TouchableOpacity>
+              </Animated.View>
 
             )})}
       </ScrollView>
@@ -65,7 +76,7 @@ const styles = StyleSheet.create({
     flex:1,
     marginTop:60,
     backgroundColor:'purple',
-    width:370,
+    width:420,
   },
   gradientBox: {
       position: 'absolute',
