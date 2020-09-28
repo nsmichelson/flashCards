@@ -16,9 +16,6 @@ export const getDecks = () => {
       }
 
 
-//  console.log("what returning from getdecks",AsyncStorage.getItem(DECK_STORAGE_KEY))
-
-
 
 
 export const setInitialData = () => {
@@ -35,14 +32,6 @@ export async function getDeck(id) {
     console.log(err);
   }
 }
-
-// export const getDeck = (deckID) => {
-//   return AsyncStorage.getItem(DECK_STORAGE_KEY)
-//   .then((decks)=>{
-//     const parsedDecks = JSON.parse(decks)
-//     return parsedDecks[deckID]
-//   })
-// }
 
 export const saveDeckTitle = (deckTitle) => {
   const newDeckObject =
@@ -83,44 +72,6 @@ export const addCardToDeck = (key, values) => {
               console.log("This is results and this is key",results,key)
                 results[key].questions.push(values)
                 return AsyncStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(results))
-                //what if return the async line above????
             })
 
           }
-
-
-
-// export async function addCardToDeck(title, card) {
-//   try {
-//     const deck = await getDeck(title);
-//
-//     await AsyncStorage.mergeItem(
-//       DECK_STORAGE_KEY,
-//       JSON.stringify({
-//         [title]: {
-//           questions: [...deck.questions].concat(card)
-//         }
-//       })
-//     );
-//   } catch (err) {
-//     console.log(err);
-//   }
-// }
-
-
-
-// export const addCardToDeck = (deckTitle, cardObject) => {
-//     return AsyncStorage.getItem(DECK_STORAGE_KEY).then(stringifiedDecks => {
-//         let decks = JSON.parse(stringifiedDecks);
-//         let deckKeys = Object.keys(decks);
-//
-//         deckKeys.forEach(deckKey => {
-//             let deck = decks[deckKey];
-//             if(deck.title === deckTitle)
-//                 deck.questions = [...deck.questions, cardObject]
-//         });
-//         let stringifiedUpdatedDecks = JSON.stringify(decks)
-//         AsyncStorage.setItem(DECK_STORAGE_KEY, stringifiedUpdatedDecks).catch(err => console.log(err))
-//         return Object.values(decks)
-//     }).catch(err => console.log(err))
-// }
