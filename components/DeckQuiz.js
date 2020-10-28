@@ -94,6 +94,7 @@ class DeckQuiz extends React.Component {
         <View style={{marginBottom:40}}></View>
 
         <Text style={{fontSize:30, color:'white'}}>Total Correct:{numCorrect} of {currentQuestion}</Text>
+        <Text style={{fontSize:30, color:'white'}}>Question #: {currentQuestion} of {total}</Text>
       </View>
       )
     }
