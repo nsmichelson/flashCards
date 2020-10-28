@@ -2,6 +2,8 @@
 This application allows users to create decks of flash cards to assist with studying.  Users can create new decks, add cards to decks and review the decks as quizzes.
 The app also has built in notifications to encourage the user to study every morning.  Notifications are reset if the user chooses to take a quiz.
 
+App was tested on iOS simulator and iPhone.
+
 ## TL;DR
 
 To get started:
