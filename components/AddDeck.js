@@ -24,13 +24,15 @@ class AddDeck extends React.Component {
     .then(()=>{
       this.props.dispatch(addDeck(text))
     })
+    .then(()=>{
+      navigation.navigate('Deck Details', {deck:text})
+    })
     this.setState(()=>{
       return({
         text:''
       })
     })
-
-    navigation.goBack()
+    //navigation.goBack()
   }
   render(){
     return(

@@ -38,10 +38,11 @@ class DeckQuiz extends React.Component {
         this.props.navigation.goBack()
       }
   onPressCorrect = () => {
-    this.setState( ({numCorrect, currentQuestion}) =>{
+    this.setState( ({numCorrect, currentQuestion, showAnswer}) =>{
       return {
         currentQuestion: currentQuestion + 1,
-        numCorrect: numCorrect + 1
+        numCorrect: numCorrect + 1,
+        showAnswer: !showAnswer
       }
     })
   }
