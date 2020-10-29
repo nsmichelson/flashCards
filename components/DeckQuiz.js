@@ -42,7 +42,7 @@ class DeckQuiz extends React.Component {
       return {
         currentQuestion: currentQuestion + 1,
         numCorrect: numCorrect + 1,
-        showAnswer: !showAnswer
+        showAnswer: false
       }
     })
   }
